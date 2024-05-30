@@ -71,7 +71,7 @@ public class Gun : MonoBehaviour
         }
 
         // reset time to fire
-        nextTimeToFire = Time.time + fireRate;
+        //nextTimeToFire = Time.time + fireRate;
     }
 
     private void OnTriggerEnter(Collider other)
