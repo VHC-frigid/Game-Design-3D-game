@@ -6,14 +6,18 @@ public class Gun : MonoBehaviour
 {
     public float range = 20f;
     public float verticalRange = 20f;
-    public float fireRate;
+    public float gunShotRadius = 20f;
+    
     public float bigdamage = 2f;
     public float smalldamage = 1f;
 
+    public float fireRate = 1;
     private float nextTimeToFire;
-    private BoxCollider gunTrigger;
 
+    public LayerMask enemyLayerMask;
     public LayerMask raycastLayerMask;
+    
+    private BoxCollider gunTrigger;
     public EnemyManager enemyManager;
     
     // Start is called before the first frame update
@@ -38,7 +42,18 @@ public class Gun : MonoBehaviour
 
     void Fire()
     {
-        //not final just testing audio
+
+        //simulate gun shot radius
+        Collider[] enemyColliders;
+        enemyColliders = Physics.OverlapSphere(transform.position, gunShotRadius, enemyLayerMask);
+
+        //alert any enemy in range
+        foreach (var enemyCollider in enemyColliders)
+        {
+            enemyCollider.GetComponent<EnemyAwareness>().isAggro = true;
+        }
+        
+        //not final just testing audio but plays test audio
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().Play();
         
