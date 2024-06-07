@@ -4899,6 +4899,7 @@ GameObject:
   - component: {fileID: 6084780895483964027}
   - component: {fileID: 4053036977817096264}
   - component: {fileID: 1386735567686138056}
+  - component: {fileID: 4199364974234967017}
   m_Layer: 0
   m_Name: GunHit2
   m_TagString: Untagged
@@ -9791,3 +9792,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4199364974234967017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003591174393515059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e46f0814fbb6b44aa2a10d281d3e8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 61
