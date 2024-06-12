@@ -27,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
         MovePlayer();
         CamAnim.SetBool("isWalking", isWalking);
+
+        // going to rewrite this later this kills you if you fall
+        if (transform.position.y < -5)
+        {
+            GetComponent<Health>().ChangeHealth(-100);
+        }
     }
 
     void GetInput()
@@ -56,5 +62,4 @@ public class PlayerMovement : MonoBehaviour
     {
         playerCC.Move(movementVector * Time.deltaTime);
     }
-
 }

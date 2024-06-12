@@ -9,12 +9,6 @@ public class Enemy : MonoBehaviour
     private float enemyHealth = 2f;
 
     public GameObject gunHitEffect;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,4 +25,5 @@ public class Enemy : MonoBehaviour
         Instantiate(gunHitEffect, transform.position, Quaternion.Euler(-90,-90,-90));
         enemyHealth -= damage;
     }
+
 }

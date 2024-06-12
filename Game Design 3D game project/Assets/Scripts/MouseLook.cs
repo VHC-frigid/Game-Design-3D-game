@@ -15,12 +15,12 @@ public class MouseLook : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        CursorManager.LockCursor();
     }
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         GetInput();
         ModifyInput();
         MovePlayer();
