@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
                     //open door
                     doorAnim.SetTrigger("OpenDoor");
                     //spawns enemies in area
-                    areaToSpawn.SetActive(true);
+                    //areaToSpawn.SetActive(true);
                 }
             }
             else
@@ -32,7 +32,7 @@ public class Door : MonoBehaviour
                 //open door
                 doorAnim.SetTrigger("OpenDoor");
                 //spawns enemies in area
-                areaToSpawn.SetActive(true);
+                //areaToSpawn.SetActive(true);
             }
         }
     }
