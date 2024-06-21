@@ -19,6 +19,9 @@ public class Gun : MonoBehaviour
     
     private BoxCollider gunTrigger;
     public EnemyManager enemyManager;
+
+    public Animator fire;
+    private bool gunFire;
     
     // Start is called before the first frame update
     void Start()
@@ -36,8 +39,14 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire)
         {
             Fire();
+            gunFire = true;
         }
-
+        else
+        {
+            gunFire = false;
+        }
+        fire.SetBool("GunShoot", gunFire);
+        fire.SetBool("Shoot", gunFire);
     }
 
     void Fire()
