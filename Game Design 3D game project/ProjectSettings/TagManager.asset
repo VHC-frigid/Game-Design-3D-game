@@ -14,8 +14,8 @@ TagManager:
   - Gun
   - Player
   - Enemy
-  - 
-  - 
+  - Ground
+  - FakeGround
   - 
   - 
   - 

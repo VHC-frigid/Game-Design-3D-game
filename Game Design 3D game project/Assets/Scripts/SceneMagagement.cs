@@ -17,6 +17,7 @@ public class SceneMagagement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
+            Time.timeScale = 1f;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

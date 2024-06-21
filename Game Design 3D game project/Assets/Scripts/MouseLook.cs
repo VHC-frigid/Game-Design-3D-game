@@ -12,6 +12,8 @@ public class MouseLook : MonoBehaviour
 
     private float currentLookingPos;
 
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject winScreen;
 
     private void Start()
     {
@@ -21,6 +23,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        if (gameOverScreen.activeSelf || winScreen.activeSelf) return;
         GetInput();
         ModifyInput();
         MovePlayer();

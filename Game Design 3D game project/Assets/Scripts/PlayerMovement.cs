@@ -14,8 +14,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 inputVector;
     private Vector3 movementVector;
-    private float playerGravity = -10f;
 
+    private float verticalSpeed;
+    [SerializeField] private float gravity;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask fakeGround;
+    [SerializeField] private float groundedAllowance;
+    [SerializeField] private float jumpHeight;
+    
+    //[SerializeField] private float grounded
 
     void Start()
     {
@@ -27,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
         MovePlayer();
         CamAnim.SetBool("isWalking", isWalking);
+
+        FakeGroundCheck();
     }
 
     void GetInput()
@@ -49,7 +58,19 @@ public class PlayerMovement : MonoBehaviour
             isWalking = false;
         }
 
-        movementVector = (inputVector * playerSpeed) + (Vector3.up * playerGravity);
+        if (IsGrounded())
+        {
+            verticalSpeed = 0f;
+        }
+        else
+        {
+            verticalSpeed -= gravity * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && IsGrounded()) verticalSpeed = jumpHeight;
+
+        movementVector = inputVector * playerSpeed;
+        movementVector.y = verticalSpeed;
     }
 
     void MovePlayer()
@@ -57,4 +78,22 @@ public class PlayerMovement : MonoBehaviour
         playerCC.Move(movementVector * Time.deltaTime);
     }
 
+    private bool IsGrounded()
+    {
+        if(Physics.SphereCast(transform.position, 0.5f, Vector3.down, out RaycastHit hit, (1f + groundedAllowance )/ 2f, groundMask))
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    // this probably shouldn't be handled in the player script in actual production
+    private void FakeGroundCheck()
+    {
+        if (Physics.SphereCast(transform.position, 0.5f, Vector3.down, out RaycastHit hit, (1f + groundedAllowance) / 2f, fakeGround))
+        {
+            Destroy(hit.collider.gameObject);
+        }
+    }
 }

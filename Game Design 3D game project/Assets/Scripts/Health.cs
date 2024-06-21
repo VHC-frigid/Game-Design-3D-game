@@ -23,6 +23,14 @@ public class Health : MonoBehaviour
         healthUi.UpdateHealthbar(health / maxHealth);
     }
 
+    void Update()
+    {
+        if (gameObject.transform.position.y < -5)
+        {
+            ChangeHealth(-maxHealth);
+        }
+    }
+
     public void ChangeHealth(float amount)
     {
         if (invincible) return;
