@@ -12,9 +12,6 @@ public class MouseLook : MonoBehaviour
 
     private float currentLookingPos;
 
-    [SerializeField] private GameObject gameOverScreen;
-    [SerializeField] private GameObject winScreen;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,7 +20,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (gameOverScreen.activeSelf || winScreen.activeSelf) return;
+        if (Time.timeScale == 0f) return;
         GetInput();
         ModifyInput();
         MovePlayer();
