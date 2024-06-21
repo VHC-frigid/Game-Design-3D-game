@@ -45,7 +45,7 @@ public class Gun : MonoBehaviour
         {
             gunFire = false;
         }
-        fire.SetBool("GunShoot", gunFire);
+        //fire.SetBool("GunShoot", gunFire);
         fire.SetBool("Shoot", gunFire);
     }
 
