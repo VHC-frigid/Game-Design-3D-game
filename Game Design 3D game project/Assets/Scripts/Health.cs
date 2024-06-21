@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.transform.position.y < -5)
+        if (gameObject.transform.position.y < -5 && health > 0)
         {
             ChangeHealth(-maxHealth);
         }
